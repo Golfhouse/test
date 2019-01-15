@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+	<script src="https://unpkg.com/vue/dist/vue.js"></script>
+	<!-- <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script> -->
+	<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+</head>
+<body>
+<div id="app">
+	<el-button @click="show=!show">Button</el-button>
+	<el-dialog :visible.sync="show" title="hello world">
+		<p>Try element!</p>
+	</el-dialog>
+</div>
+<script>
+	new Vue({
+		el:"#app",
+		data:function(){
+			return {
+				show:false
+			}
+		}
+	})
+
+</script>
+</body>
+</html>

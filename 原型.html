@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+/*	function Animal(name){
+		this.name=name;
+		// console.log(this);   //window
+		// console.log(this.name);  //name
+	}
+	Animal.prototype.run=function(){
+		console.log(this.name+' is running!');
+	}*/
+	// Animal('hello');
+	/*var a=new Animal('a');
+	var b=new Animal('b');*/
+	// console.log(Animal.prototype);   //Animal {}
+	// console.log(a.__proto__==Animal.prototype);  //true
+	// console.log(a.__proto__.__proto__);
+	// console.log(a.prototype);  //undefined
+	// console.log(a);
+/*
+	function Dog(name){
+		Animal.call(this,name);
+	}
+	var F=function(){};
+	F.prototype=Animal.prototype;
+
+	Dog.prototype=new F();*/
+	// var dog=new Dog('dog');
+	// dog.run();
+	// console.log(Dog.prototype.constructor);
+	
+
+
+	
+	// var animal=function(name){
+	// 	this.name=name;
+	// 	this.show=function(){
+	// 		console.log(this.name);
+	// 	}
+	// }
+	// animal.prototype.run=function(){
+	// 	console.log(this.name+' is running!');
+	// }
+	// var a=new animal('dog');
+
+
+	// // 继承
+	// var car=function(name,color){
+	// 	animal.call(this,name);
+	// 	this.color=color;
+	// 	this.showColor=function(){
+	// 		console.log(this.name+'---'+this.color);
+	// 	}
+	// }
+	// // console.log(car.prototype);
+	// car.prototype=animal.prototype;
+	// car.prototype.constructor=car;
+	// // console.log(car.prototype);
+	// var b=new car('咪咪','yellow');
+	// // b.showColor();
+	// // // b.run();
+	// console.log(b instanceof car);  //true
+	// console.log(b instanceof Object);  //true
+	var arr=[1,2,3,4,5,6];
+	// console.log(arr instanceof String);
+	// console.log(typeof Array);   //function
+	// console.log(typeof Object);   //function
+	// console.log(typeof {});   //object
+	// console.log(typeof arr);   //object
+
+	var html={
+		name:'zhang jun',
+		run:function(){
+			console.log(this.name);
+		}
+	}
+	// html.run();
+	//继承
+	function person(name){
+		this.name=name;
+		this.run=function(){
+			console.log(this.name+' is run!');
+		}
+	}
+	person.prototype.showName=function(){
+		console.log(this.name);
+	}
+
+	//属性的继承和方法的继承
+	function worker(name,work){
+		// 属性的继承
+		person.call(this,name);
+		this.work=work;
+	}
+	// 方法的继承
+	worker.prototype=person.prototype;
+	worker.prototype.constructor=worker;
+	worker.prototype.showWork=function(){
+		console.log(this.work);
+	}
+	var w=new worker('zhangjun','web前端');
+
+	// w.run();
+	// w.showName();
+	// w.showWork();
+	// 
+	// 
+	// 
+	// 
+	// 混合继承方法
+	function student(sex){
+		this.sex=sex;
+	}
+	student.prototype=new person('zhangjun');
+	student.prototype.showSex=function(){
+		console.log(this.sex+'-----'+this.name);
+	}
+	var s=new student('man');
+	// s.run();
+	// s.showName();
+	// s.showSex();
+	
+
+
+	// function html2(){
+	// 	this.name='junjun';
+	// 	this.running=function(){
+	// 		console.log(this.name+'----running');
+	// 	}
+	// };
+
+	// html2.prototype.show=function(){
+	// 	console.log(this.name+'----show');
+	// }
+
+	// console.log(html2.prototype);
+
+
+	//闭包
+	// var first=function(){
+	// 	var x='我是一个外部变量。';
+	// 	return function(){
+	// 		var y='我是一个内部的变量。';
+	// 		console.log(x+'-----'+y);
+	// 	}
+
+	// }
+
+	// first();
+	// 
+	// 
+	// 闭包1
+	// var f=(function(){
+	// 	var count=0;
+	// 	function b(){
+	// 		count++;
+	// 		console.log(count);
+	// 	}
+	// 	return b;
+	// })();
+	// f();
+	// f();
+	// f();
+	// 闭包2
+	function inner1(num){
+		function inner2(){
+			console.info(num);
+		}
+		return inner2;
+	}
+	function outer(){
+		var result=[];
+		for(var i=0;i<10;i++){
+			// ()()方法
+			// result[i]=(function(i){
+			// 	console.info(i);
+			// })(i)
+			// 闭包方法
+			result[i]=inner1(i);  //定义闭包函数
+		}
+		return result;
+	}
+	var res=outer();
+	// console.log(res[0]);
+	res[0]();
+	res[1]();
+	res[2]();
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
